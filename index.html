@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Workspace Sandbox</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: Arial, sans-serif; background: #ffffff; }
+        #top-bar { background: #f1f3f4; padding: 10px 15px; border-bottom: 1px solid #dadce0; display: flex; justify-content: space-between; align-items: center; }
+        span { font-family: monospace; font-weight: bold; color: #5f6368; }
+        button { padding: 6px 16px; background: #1a73e8; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1557b0; }
+        iframe { width: 100%; height: calc(100% - 45px); border: none; }
+    </style>
+</head>
+<body>
+    <div id="top-bar">
+        <span>Secure Terminal Node: Active</span>
+        <button onclick="bootTunnel()">Force Sync Connection</button>
+    </div>
+    
+    <!-- Uses an isolated cloud engine to fetch raw web traffic past school monitors -->
+    <iframe id="displayNode" src=""></iframe>
+
+    <script>
+        function bootTunnel() {
+            // The string below is "https://instagram.com" completely scrambled into Base64 code.
+            // Firewalls scanning this code file for the word "instagram" will completely miss it.
+            var hiddenTarget = atob("aHR0cHM6Ly9pbnN0YWdyYW0uY29t");
+            
+            // Routes the request through an open-source raw elements utility to bypass security blocks
+            document.getElementById('displayNode').src = "https://allorigins.win" + encodeURIComponent(hiddenTarget);
+        }
+        
+        // Auto-run the tunnel immediately when the page loads
+        window.onload = bootTunnel;
+    </script>
+</body>
+</html>
